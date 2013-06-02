@@ -1,0 +1,32 @@
+{
+    "name": "net_bazzline/php_component_converter",
+    "type": "library",
+    "description": "php componet that can handle converting of xml, php array, yaml",
+    "keywords": ["php", "bazzline", "symfony", "console", "io"],
+    "homepage": "https://github.com/stevleibelt/php_net_bazzline_component_convert",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "stev leibelt",
+            "email": "artodeto@arcor.de",
+            "homepage": "http://artodeto.bazzline.net",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/yaml": "2.2.*@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "mikey179/vfsStream": "dev-master",
+	    "mockery/mockery": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Net\\Bazzline\\Component\\Converter": "source/",
+            "Test\\Net\\Bazzline\\Component\\Converter": "test/"
+        }
+    }
+}
