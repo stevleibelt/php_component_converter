@@ -11,6 +11,7 @@ use Exception;
 
 /**
  * Class XmlConverter
+ * http://php.net/manual/en/book.simplexml.php
  *
  * @package Net\Bazzline\Component\Converter
  * @author stev leibelt <artodeto@arcor.de>
@@ -58,14 +59,8 @@ class XmlConverter extends ConverterAbstract
      */
     protected function convertFromSourceToArray($source)
     {
-        $array = array();
-        $properties = get_object_vars($source);
-
-        foreach ($properties as $property) {
-            $array[$property] = (is_array($source->$property)) ?
-                $this->convertFromSourceToArray($source->$property) :
-                $source->$property;
-        }
+        $json = json_encode($source);
+        $array = json_decode($json, true);
 
         return $array;
     }
@@ -75,14 +70,19 @@ class XmlConverter extends ConverterAbstract
      */
     protected function convertFromArrayToSource(array $array)
     {
-        $source = new SimpleXMLElement('');
+        $keys = array_keys($array);
+        $rootTag = current($keys);
 
-        foreach ($array as $key => $value) {
-            $source->$key = (is_array($array[$key]))
-                ? $this->convertFromArrayToSource($array[$key])
-                : $array[$key];
-        }
+        $xml = new SimpleXMLElement(
+            '<?xml version="1.0" encoding="utf-8"?>' .
+            '<' . $rootTag . '></' . $rootTag . '>'
+        );
 
-        return $source;
+        array_walk_recursive(
+            $array[$rootTag],
+            array ($xml, 'addChild')
+        );
+
+        return $xml->asXML();
     }
 }
