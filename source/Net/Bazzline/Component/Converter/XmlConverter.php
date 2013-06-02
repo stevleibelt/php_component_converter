@@ -51,7 +51,7 @@ class XmlConverter extends ConverterAbstract
      */
     public function toSource()
     {
-        return (string) $this->source;
+        return $this->source;
     }
 
     /**
