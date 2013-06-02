@@ -3,6 +3,7 @@
  * @author stev leibelt <artodeto@arcor.de>
  * @since 2013-06-02
  */
+
 namespace Net\Bazzline\Component\Converter;
 
 /**
@@ -19,6 +20,7 @@ interface ConverterInterface
      *
      * @param array $array - the php array
      * @author stev leibelt <artodeto@arcor.de>
+     * @return ConverterInterface
      * @since 2013-06-02
      */
     public function fromPhpArray(array $array);
@@ -29,6 +31,7 @@ interface ConverterInterface
      * @param string $source - the source that should be converted
      * @throws InvalidArgumentException
      * @author stev leibelt <artodeto@arcor.de>
+     * @return ConverterInterface
      * @since 2013-06-02
      */
     public function fromSource($source);
