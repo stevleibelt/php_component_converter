@@ -55,7 +55,7 @@ class XmlConverterTest extends PHPUnit_Framework_TestCase
             )
         );
 
-        $this->source = '<?xml version="1.0" encoding="utf-8"?>' .
+        $this->source = '<?xml version="1.0" encoding="utf-8"?>' . PHP_EOL .
             '<test>' .
                 '<first>' .
                     '<firstChild>firstChildValue</firstChild>' .
@@ -93,7 +93,7 @@ class XmlConverterTest extends PHPUnit_Framework_TestCase
      * @author stev leibelt <artodeto@arcor.de>
      * @since 2013-06-02
      */
-    public function TtestFromSourceWithInvalidSource($source)
+    public function testFromSourceWithInvalidSource($source)
     {
         $this->converter->fromSource($source);
     }
@@ -116,6 +116,10 @@ class XmlConverterTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    /**
+     * @author stev leibelt <artodeto@arcor.de>
+     * @since 2013-06-03
+     */
     public function testFromPhpArrayWithValidSource()
     {
         $this->converter->fromPhpArray($this->array);

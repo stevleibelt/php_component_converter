@@ -45,7 +45,6 @@ abstract class ConverterAbstract implements ConverterInterface
         $this->array = $array;
         $this->source = $this->convertFromArrayToSource($array);
 
-echo var_export($this->source, true);
         return $this;
     }
 

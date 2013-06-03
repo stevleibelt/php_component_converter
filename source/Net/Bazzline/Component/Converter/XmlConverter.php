@@ -38,7 +38,7 @@ class XmlConverter extends ConverterAbstract
             );
         }
 
-        $this->source = $xml;
+        $this->source = trim($xml->asXML());
         $this->array = $this->convertFromSourceToArray($xml);
     }
 
@@ -70,19 +70,36 @@ class XmlConverter extends ConverterAbstract
      */
     protected function convertFromArrayToSource(array $array)
     {
-        $keys = array_keys($array);
-        $rootTag = current($keys);
+        $rootTag = key($array);
 
-        $xml = new SimpleXMLElement(
-            '<?xml version="1.0" encoding="utf-8"?>' .
-            '<' . $rootTag . '></' . $rootTag . '>'
-        );
+        $xml = '<?xml version="1.0" encoding="utf-8"?>' . PHP_EOL .
+            '<' . $rootTag . '>' .
+            $this->fromArrayToXmlString($array[$rootTag]) .
+            '</' . $rootTag . '>';
 
-        array_walk_recursive(
-            $array[$rootTag],
-            array ($xml, 'addChild')
-        );
+        return $xml;
+    }
 
-        return $xml->asXML();
+    /**
+     * Builds xml string from provided array.
+     *
+     * @param array $array
+     * @return string
+     * @author stev leibelt <artodeto@arcor.de>
+     * @since 2013-06-03
+     */
+    private function fromArrayToXmlString(array $array)
+    {
+        $string = '';
+
+        foreach ($array as $key => $value) {
+            $string .= '<' . $key . '>' .
+                ((is_array($value))
+                    ? $this->fromArrayToXmlString($value)
+                    : $value) .
+                '</' . $key . '>';
+        }
+
+        return $string;
     }
 }
