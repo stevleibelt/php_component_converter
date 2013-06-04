@@ -16,13 +16,7 @@ namespace Net\Bazzline\Component\Converter;
 class PhpArrayConverter extends ConverterAbstract
 {
     /**
-     * Loads from source format
-     *
-     * @param string $source - the source that should be converted
-     * @throws InvalidArgumentException
-     * @author stev leibelt <artodeto@arcor.de>
-     * @return ConverterInterface
-     * @since 2013-06-02
+     * @{inheritDoc}
      */
     public function fromSource($source)
     {
@@ -34,18 +28,8 @@ class PhpArrayConverter extends ConverterAbstract
 
         $this->source = $source;
         $this->array = $this->convertFromSourceToArray($source);
-    }
 
-    /**
-     * Returns the source format as string.
-     *
-     * @return string
-     * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
-     */
-    public function toSource()
-    {
-        return $this->source;
+        return $this;
     }
 
     /**

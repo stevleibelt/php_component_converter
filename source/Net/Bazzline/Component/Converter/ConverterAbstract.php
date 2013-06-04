@@ -40,6 +40,14 @@ abstract class ConverterAbstract implements ConverterInterface
     /**
      * @{inheritDoc}
      */
+    public function toSource()
+    {
+        return $this->source;
+    }
+
+    /**
+     * @{inheritDoc}
+     */
     public function fromPhpArray(array $array)
     {
         $this->array = $array;

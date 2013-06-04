@@ -7,7 +7,6 @@
 namespace Net\Bazzline\Component\Converter;
 
 use PHPUnit_Framework_TestCase;
-use SimpleXMLElement;
 use stdClass;
 
 /**

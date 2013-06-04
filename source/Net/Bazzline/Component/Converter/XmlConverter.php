@@ -11,7 +11,6 @@ use Exception;
 
 /**
  * Class XmlConverter
- * http://php.net/manual/en/book.simplexml.php
  *
  * @package Net\Bazzline\Component\Converter
  * @author stev leibelt <artodeto@arcor.de>
@@ -20,13 +19,7 @@ use Exception;
 class XmlConverter extends ConverterAbstract
 {
     /**
-     * Loads from source format
-     *
-     * @param string $source - the source that should be converted
-     * @throws InvalidArgumentException
-     * @author stev leibelt <artodeto@arcor.de>
-     * @return ConverterInterface
-     * @since 2013-06-02
+     * @{inheritDoc}
      */
     public function fromSource($source)
     {
@@ -40,18 +33,8 @@ class XmlConverter extends ConverterAbstract
 
         $this->source = trim($xml->asXML());
         $this->array = $this->convertFromSourceToArray($xml);
-    }
 
-    /**
-     * Returns the source format as string.
-     *
-     * @return string
-     * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
-     */
-    public function toSource()
-    {
-        return $this->source;
+        return $this;
     }
 
     /**
