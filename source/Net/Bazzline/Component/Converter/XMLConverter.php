@@ -10,13 +10,13 @@ use SimpleXMLElement;
 use Exception;
 
 /**
- * Class XmlConverter
+ * Class XMLConverter
  *
  * @package Net\Bazzline\Component\Converter
  * @author stev leibelt <artodeto@arcor.de>
  * @since 2013-06-02
  */
-class XmlConverter extends ConverterAbstract
+class XMLConverter extends ConverterAbstract
 {
     /**
      * @{inheritDoc}

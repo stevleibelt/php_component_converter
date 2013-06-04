@@ -1,47 +1,46 @@
 <?php
 /**
  * @author stev leibelt <artodeto@arcor.de>
- * @since 2013-06-02 
+ * @since 2013-06-04 
  */
 
 namespace Net\Bazzline\Component\Converter;
 
 use PHPUnit_Framework_TestCase;
-use stdClass;
 
 /**
- * Class XmlConverterTest
+ * Class YAMLConverterTest
  *
  * @package Net\Bazzline\Component\Converter
  * @author stev leibelt <artodeto@arcor.de>
- * @since 2013-06-02
+ * @since 2013-06-04
  */
-class XmlConverterTest extends PHPUnit_Framework_TestCase
+class YAMLConverterTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var array
      * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
+     * @since 2013-06-04
      */
     private $array;
 
     /**
-     * @var XmlConverter
+     * @var XMLConverter
      * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
+     * @since 2013-06-04
      */
     private $converter;
 
     /**
      * @var string
      * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
+     * @since 2013-06-04
      */
     private $source;
 
     /**
      * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
+     * @since 2013-06-04
      */
     protected function setUp()
     {
@@ -54,54 +53,21 @@ class XmlConverterTest extends PHPUnit_Framework_TestCase
             )
         );
 
-        $this->source = '<?xml version="1.0" encoding="utf-8"?>' . PHP_EOL .
-            '<test>' .
-                '<first>' .
-                    '<firstChild>firstChildValue</firstChild>' .
-                '</first>' .
-                '<second>secondValue</second>' .
-            '</test>';
+        $this->source =
+            'test:' . PHP_EOL .
+            '    first:' . PHP_EOL .
+            '        firstChild: firstChildValue' . PHP_EOL .
+            '    second: secondValue' . PHP_EOL .
+            '';
 
-        $this->converter = new XmlConverter();
-    }
-
-    /**
-     * Returns invalid source
-     *
-     * @return array
-     * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
-     */
-    static public function invalidSourceDataProvider()
-    {
-        return array(
-            array(null),
-            array(array(1)),
-            array(1),
-            array('1'),
-            array(array('1')),
-            array(new stdClass())
-        );
-    }
-
-    /**
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage No xml given as source
-     * @dataProvider invalidSourceDataProvider
-     * @param mixed $source
-     * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
-     */
-    public function testFromSourceWithInvalidSource($source)
-    {
-        $this->converter->fromSource($source);
+        $this->converter = new YAMLConverter();
     }
 
     /**
      * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-02
+     * @since 2013-06-04
      */
-    public function testFromSourceWithValidSource()
+    public function testFromSource()
     {
         $this->converter->fromSource($this->source);
 
@@ -117,9 +83,9 @@ class XmlConverterTest extends PHPUnit_Framework_TestCase
 
     /**
      * @author stev leibelt <artodeto@arcor.de>
-     * @since 2013-06-03
+     * @since 2013-06-04
      */
-    public function testFromPhpArrayWithValidSource()
+    public function testFromPhpArray()
     {
         $this->converter->fromPhpArray($this->array);
 
