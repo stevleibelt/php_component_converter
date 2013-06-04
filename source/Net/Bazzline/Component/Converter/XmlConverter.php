@@ -60,7 +60,9 @@ class XmlConverter extends ConverterAbstract
     protected function convertFromSourceToArray($source)
     {
         $json = json_encode($source);
-        $array = json_decode($json, true);
+        $array = array(
+            $source->getName() => json_decode($json, true)
+        );
 
         return $array;
     }
