@@ -4,7 +4,7 @@
     "description": "php component that can handle converting of xml, php array, yaml",
     "keywords": ["php", "net_bazzline", "converting", "xml", "php array", "yaml", "json"],
     "homepage": "https://github.com/stevleibelt/php_net_bazzline_component_convert",
-    "license": "GPLv3",
+    "license": "LGPLv3",
     "authors": [
         {
             "name": "stev leibelt",
