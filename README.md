@@ -2,6 +2,9 @@
 
 php tool that can handle convertation of following formats: php array, xml, yaml
 
+The build status of the current master branch is tracked by Travis CI: 
+[![Build Status](https://travis-ci.org/stevleibelt/php_component_converter.png?branch=master)](http://travis-ci.org/stevleibelt/php_component_converter)
+
 ## Converters
 
 Right now, following converters are available out of the box:
